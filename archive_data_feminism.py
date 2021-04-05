@@ -34,16 +34,17 @@ today = now.strftime('%Y-%m-%d')
 weekago= now - timedelta(days=7)
 lastweek = weekago.strftime('%Y-%m-%d')
 
+# Set up search terms
+search_terms = 'data feminism OR #datafeminism'
+
 # Set up CSV file
-fname = 'output-' + lastweek +'.csv'
+fname = search_terms[:10]+'-output-' + lastweek +'.csv'
 csvFile = open(fname, 'w', encoding="utf-8")
 
 fieldnames = ['tweet_id', 'datetime', 'user_id', 'username', 'is_retweet', 'text', 'is_quoted_tweet', 'favorite_count', 'retweet_count', 'replying_to_username', 'tweet_url']
 csvWriter = csv.writer(csvFile)
 csvWriter.writerow(fieldnames)
 
-# Set up search terms
-search_terms = 'data feminism OR #datafeminism'
 
 # Search API and write results to csv file
 # This way of searching can only go back 1 week
